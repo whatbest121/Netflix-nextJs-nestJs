@@ -1,0 +1,8 @@
+GET https://api.themoviedb.org/3/movie/popular?api_key=12c28936&language=en-US&page=1
+###
+
+GET http://localhost:3333/
+
+###
+
+GET http://localhost:3333/movie
