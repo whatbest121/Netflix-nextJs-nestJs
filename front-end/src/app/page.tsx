@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { dataMovie } from "./data";
 import { Movie } from "@/components/movie";
+import useGetMovie from "@/service/useGetMovie";
 export default function Home() {
   const [opacity, setOpacity] = useState(1);
 
@@ -17,6 +18,12 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const { data, isLoading, isError, error } = useGetMovie();
+
+  if (isLoading) return <div>กำลังโหลด...</div>;
+
+  if (isError) return <div>เกิดข้อผิดพลาด: {error.message}</div>;
 
   return (
     <div className="flex flex-col min-h-screen bg-black ">
